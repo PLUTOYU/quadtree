@@ -8,6 +8,8 @@
 #include "writeTree.h"
 #include "math.h"
 #include "nodeValue.h"
+
+
 // Evaluate function at centre of quadtree node
 void leavevalue(Node *node){
   int i;
@@ -16,7 +18,6 @@ void leavevalue(Node *node){
   if(node->child[0]==NULL){
 
         Value=nodeValue(node,time);
-        printf("%f",Value);
         if(Value>0.5)
             node->flag=1;
         else if(Value<-0.5)
@@ -29,31 +30,48 @@ void leavevalue(Node *node){
   }
   return;
 }
+int a=0;
 void change(Node *parent){
     int i;
-    int add,remove;
+    int level;
     if(parent->child[0]==NULL){
-        if(parent->flag==1){
-            makeChildren(parent);
-            add++;
-        }
+        if(parent->flag==1&&parent->level<maxlevel){
+               growtree(parent);
+               add++;
+            }
     }
     else{
         if(parent->child[0]->flag==-1&&parent->child[1]->flag==-1&&parent->child[2]->flag==-1&&parent->child[3]->flag==-1)
-        {
-            removechild(parent);
-            remove++;
-
+        {      //if(parent->level!=0){
+                    removechild(parent);
+                    sub++;
         }
         else {
-            for(i=0;i<4;++i){
+            for(i=0;i<4;++i)
             change(parent->child[i]);
-             }
         }
     }
-
 }
 
+void adapt( Node *head ){
+  int i=0;
+  int level;
+  do{
+        leavevalue(head);
+        print(head);
+  }while(add+sub!=0);
+}
+
+
+void print(Node *head){
+  add=0;
+  sub=0;
+  change(head);
+  //adapt(head);
+  printf("%d\n",add);
+  printf("%d\n",sub);
+  return;
+}
 
 
 
