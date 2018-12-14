@@ -1,16 +1,13 @@
 #include "math.h"
-
-#include "treeStructure.h"
 #include "stdio.h"
 #include "stdlib.h"
 #include "treeStructure.h"
 #include "buildTree.h"
 #include "writeTree.h"
-#include "math.h"
 #include "nodeValue.h"
 
 
-// Evaluate function at centre of quadtree node
+//judge each nodes' flag
 void leavevalue(Node *node){
   int i;
   float Value;
@@ -30,21 +27,20 @@ void leavevalue(Node *node){
   }
   return;
 }
-int a=0;
+//use flag to add or remove children
 void change(Node *parent){
     int i;
-    int level;
     if(parent->child[0]==NULL){
         if(parent->flag==1&&parent->level<maxlevel){
                growtree(parent);
-               add++;
+               add=add+4;
             }
     }
     else{
         if(parent->child[0]->flag==-1&&parent->child[1]->flag==-1&&parent->child[2]->flag==-1&&parent->child[3]->flag==-1)
-        {      //if(parent->level!=0){
+        {
                     removechild(parent);
-                    sub++;
+                    sub=sub+4;
         }
         else {
             for(i=0;i<4;++i)
@@ -52,29 +48,27 @@ void change(Node *parent){
         }
     }
 }
-
+//running task3 until the tree does not change
 void adapt( Node *head ){
-  int i=0;
-  int level;
   do{
         leavevalue(head);
-        print(head);
-  }while(add+sub!=0);
+        p(head);
+  }while(add!=0&&sub!=0);
 }
 
-
-void print(Node *head){
+//print the value of add and remove
+void p(Node *head){
   add=0;
   sub=0;
   change(head);
   //adapt(head);
-  printf("%d\n",add);
-  printf("%d\n",sub);
+  printf("add nodes:%d\n",add);
+  printf("remove nodes:%d\n",sub);
   return;
 }
 
 
-
+// Evaluate function at centre of quadtree node
 double nodeValue( Node *node, double time ) {
 
   int level = node->level;

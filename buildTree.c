@@ -1,29 +1,32 @@
 #include "stdio.h"
 #include "stdlib.h"
+#include "math.h"
 #include "treeStructure.h"
 #include "buildTree.h"
 #include "writeTree.h"
-#include "math.h"
 #include "nodeValue.h"
-
+//grow the tree
 void growtree(Node *node){
     int i=0;
-    if(node->child[0]!=NULL){
-        for(i=0;i<4;i++)
-            growtree(node->child[i]);
-    }
-    else{
-            makeChildren(node);
+    if(node->level<maxlevel){
+       if(node->child[0]!=NULL){
+            for(i=0;i<4;i++)
+                growtree(node->child[i]);
         }
+        else{
+                makeChildren(node);
+            }
+    }
     return;
 }
+//destroy the whole tree
 void destroy(Node *node){
     int i=0;
     int level=node->level;
-    /*if(level==0){
+    if(level==0){
         free(node);
         node==NULL;
-    }*/
+    }
     if(node->child[0]==NULL){
        return;
     }
@@ -36,24 +39,9 @@ void destroy(Node *node){
         return;
     }
 }
+//remove only one node
 void removechild(Node *parent){
     int i=0;
-    /*int level=parent->level;
-    if(parent->child[0]!=NULL){
-        for(i=0;i<4;++i){
-            removechild(parent->child[i]);
-            free(parent->child[i]);
-            parent->child[i]=NULL;
-        }
-        return;
-    }
-    if(parent->child[0]==NULL){
-        for(i-0;i<4;i++){
-            free(parent->child[i]);
-            parent->child[i]=NULL;
-        }
-        return;
-    }*/
     for(i=0;i<4;i++){
         free(parent->child[i]);
         parent->child[i]=NULL;

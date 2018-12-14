@@ -1,9 +1,9 @@
 #include "stdio.h"
 #include "stdlib.h"
+#include "math.h"
 #include "treeStructure.h"
 #include "buildTree.h"
 #include "writeTree.h"
-#include "math.h"
 #include "nodeValue.h"
 void writeTree( Node *head ) {
 
