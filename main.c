@@ -16,27 +16,27 @@ int main( int argc, char **argv ) {
   // make a tree
 
   //task1-test1
-  /*growtree(head);
   growtree(head);
-  destroy(head);
+  growtree(head);
+
 
   //task1-test2
   /*growtree(head);
   makeChildren(head->child[1]);
-  removechild(head->child[1]);
-  destroy(head);*/
+  removechild(head->child[1]);*/
+
 
   //task2-test1
   /*growtree(head);
   growtree(head);
-  removechild(head->child[1]);
-  destroy(head);*/
+  removechild(head->child[1]);*/
+
 
   //task2-text2
   /*growtree(head);
   makeChildren(head->child[1]);
-  removechild(head->child[1]);
-  destroy(head);*/
+  removechild(head->child[1]);*/
+
 
   //task3
   /*growtree(head);
@@ -50,13 +50,16 @@ int main( int argc, char **argv ) {
   printf("remove nodes:%d\n",sub);*/
 
   //task3 extend
+  /*growtree(head);
   growtree(head);
   growtree(head);
-  growtree(head);
-  adapt(head);
+  adapt(head);*/
 
 
   // print the tree for Gnuplot
   writeTree( head );
+  destroy(head);
+  free(head);
+  head=NULL;
   return 0;
 }

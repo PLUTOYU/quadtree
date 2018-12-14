@@ -22,11 +22,7 @@ void growtree(Node *node){
 //destroy the whole tree
 void destroy(Node *node){
     int i=0;
-    int level=node->level;
-    if(level==0){
-        free(node);
-        node==NULL;
-    }
+
     if(node->child[0]==NULL){
        return;
     }
