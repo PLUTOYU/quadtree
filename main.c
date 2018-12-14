@@ -43,7 +43,11 @@ int main( int argc, char **argv ) {
   growtree(head);
   growtree(head);
   leavevalue(head);
-  p(head);*/
+  add=0;
+  sub=0;
+  change(head);
+  printf("add nodes:%d\n",add);
+  printf("remove nodes:%d\n",sub);*/
 
   //task3 extend
   growtree(head);

@@ -51,21 +51,17 @@ void change(Node *parent){
 //running task3 until the tree does not change
 void adapt( Node *head ){
   do{
+        add=0;
+        sub=0;
         leavevalue(head);
-        p(head);
+        change(head);
+        printf("add nodes:%d\n",add);
+        printf("remove nodes:%d\n",sub);
+
   }while(add!=0&&sub!=0);
 }
 
-//print the value of add and remove
-void p(Node *head){
-  add=0;
-  sub=0;
-  change(head);
-  //adapt(head);
-  printf("add nodes:%d\n",add);
-  printf("remove nodes:%d\n",sub);
-  return;
-}
+
 
 
 // Evaluate function at centre of quadtree node
